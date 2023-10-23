@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<coverage line-rate="1" branch-rate="1" version="1.9" timestamp="1698071905" lines-covered="7" lines-valid="7" branches-covered="0" branches-valid="0">
+  <sources>
+    <source>C:\</source>
+  </sources>
+  <packages>
+    <package name="SpaceBattle.Lib" line-rate="1" branch-rate="1" complexity="2">
+      <classes>
+        <class name="SpaceBattle.Lib.RotateCommand" filename="Users\Sovano\source\repos\bimbimbambam\SpaceBattle.Lib\Rotation.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="Execute" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="17" hits="5" branch="False" />
+                <line number="18" hits="5" branch="False" />
+                <line number="19" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(SpaceBattle.Lib.IRotation)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="4" branch="False" />
+                <line number="13" hits="4" branch="False" />
+                <line number="14" hits="4" branch="False" />
+                <line number="15" hits="4" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="5" branch="False" />
+            <line number="18" hits="5" branch="False" />
+            <line number="19" hits="2" branch="False" />
+            <line number="12" hits="4" branch="False" />
+            <line number="13" hits="4" branch="False" />
+            <line number="14" hits="4" branch="False" />
+            <line number="15" hits="4" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

@@ -1,33 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib.Tests/SpaceBattle.Lib.Tests.csproj": {}
+    "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib.Tests\\SpaceBattle.Lib.Tests.csproj": {}
   },
   "projects": {
-    "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib.Tests/SpaceBattle.Lib.Tests.csproj": {
+    "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib.Tests\\SpaceBattle.Lib.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib.Tests/SpaceBattle.Lib.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib.Tests\\SpaceBattle.Lib.Tests.csproj",
         "projectName": "SpaceBattle.Lib.Tests",
-        "projectPath": "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib.Tests/SpaceBattle.Lib.Tests.csproj",
-        "packagesPath": "/Users/sergejkotov/.nuget/packages/",
-        "outputPath": "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib.Tests/obj/",
+        "projectPath": "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib.Tests\\SpaceBattle.Lib.Tests.csproj",
+        "packagesPath": "C:\\Users\\Sovano\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/sergejkotov/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Sovano\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib/SpaceBattle.Lib.csproj": {
-                "projectPath": "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib/SpaceBattle.Lib.csproj"
+              "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib\\SpaceBattle.Lib.csproj": {
+                "projectPath": "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib\\SpaceBattle.Lib.csproj"
               }
             }
           }
@@ -54,7 +56,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[6.0.0, )"
             },
             "xunit": {
               "target": "Package",
@@ -83,26 +85,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib/SpaceBattle.Lib.csproj": {
+    "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib\\SpaceBattle.Lib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib/SpaceBattle.Lib.csproj",
+        "projectUniqueName": "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib\\SpaceBattle.Lib.csproj",
         "projectName": "SpaceBattle.Lib",
-        "projectPath": "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib/SpaceBattle.Lib.csproj",
-        "packagesPath": "/Users/sergejkotov/.nuget/packages/",
-        "outputPath": "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib/obj/",
+        "projectPath": "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib\\SpaceBattle.Lib.csproj",
+        "packagesPath": "C:\\Users\\Sovano\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/sergejkotov/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Sovano\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -136,7 +140,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
