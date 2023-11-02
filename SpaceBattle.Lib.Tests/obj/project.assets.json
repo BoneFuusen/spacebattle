@@ -18,7 +18,7 @@
           }
         }
       },
-      "coverlet.collector/3.1.2": {
+      "coverlet.collector/6.0.0": {
         "type": "package",
         "build": {
           "build/netstandard1.0/coverlet.collector.targets": {}
@@ -1904,13 +1904,14 @@
         "readme.txt"
       ]
     },
-    "coverlet.collector/3.1.2": {
-      "sha512": "wuLDIDKD5XMt0A7lE31JPenT7QQwZPFkP5rRpdJeblyXZ9MGLI8rYjvm5fvAKln+2/X+4IxxQDxBtwdrqKNLZw==",
+    "coverlet.collector/6.0.0": {
+      "sha512": "tW3lsNS+dAEII6YGUX/VMoJjBS1QvsxqJeqLaJXub08y1FSjasFPtQ4UBUsudE9PNrzLjooClMsPtY2cZLdXpQ==",
       "type": "package",
-      "path": "coverlet.collector/3.1.2",
+      "path": "coverlet.collector/6.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "build/netstandard1.0/Microsoft.Bcl.AsyncInterfaces.dll",
         "build/netstandard1.0/Microsoft.CSharp.dll",
         "build/netstandard1.0/Microsoft.DotNet.PlatformAbstractions.dll",
         "build/netstandard1.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
@@ -1938,6 +1939,7 @@
         "build/netstandard1.0/System.Reflection.Emit.dll",
         "build/netstandard1.0/System.Reflection.Metadata.dll",
         "build/netstandard1.0/System.Reflection.TypeExtensions.dll",
+        "build/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
         "build/netstandard1.0/System.Runtime.Serialization.Primitives.dll",
         "build/netstandard1.0/System.Text.RegularExpressions.dll",
         "build/netstandard1.0/System.Threading.Tasks.Extensions.dll",
@@ -1951,7 +1953,7 @@
         "build/netstandard1.0/coverlet.core.dll",
         "build/netstandard1.0/coverlet.core.pdb",
         "coverlet-icon.png",
-        "coverlet.collector.3.1.2.nupkg.sha512",
+        "coverlet.collector.6.0.0.nupkg.sha512",
         "coverlet.collector.nuspec"
       ]
     },
@@ -6259,38 +6261,40 @@
       "Microsoft.NET.Test.Sdk >= 17.3.2",
       "Moq >= 4.20.69",
       "SpaceBattle.Lib >= 1.0.0",
-      "coverlet.collector >= 3.1.2",
+      "coverlet.collector >= 6.0.0",
       "xunit >= 2.4.2",
       "xunit.runner.visualstudio >= 2.4.5"
     ]
   },
   "packageFolders": {
-    "/Users/sergejkotov/.nuget/packages/": {}
+    "C:\\Users\\Sovano\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib.Tests/SpaceBattle.Lib.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib.Tests\\SpaceBattle.Lib.Tests.csproj",
       "projectName": "SpaceBattle.Lib.Tests",
-      "projectPath": "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib.Tests/SpaceBattle.Lib.Tests.csproj",
-      "packagesPath": "/Users/sergejkotov/.nuget/packages/",
-      "outputPath": "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib.Tests/obj/",
+      "projectPath": "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib.Tests\\SpaceBattle.Lib.Tests.csproj",
+      "packagesPath": "C:\\Users\\Sovano\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/sergejkotov/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Sovano\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib/SpaceBattle.Lib.csproj": {
-              "projectPath": "/Users/sergejkotov/Desktop/SpaceBattle/SpaceBattle.Lib/SpaceBattle.Lib.csproj"
+            "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib\\SpaceBattle.Lib.csproj": {
+              "projectPath": "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib\\SpaceBattle.Lib.csproj"
             }
           }
         }
@@ -6317,7 +6321,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[3.1.2, )"
+            "version": "[6.0.0, )"
           },
           "xunit": {
             "target": "Package",
@@ -6346,7 +6350,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
