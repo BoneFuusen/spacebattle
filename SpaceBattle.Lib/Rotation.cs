@@ -10,11 +10,11 @@ public class RotateCommand : ICommand
 {
     private readonly IRotation rotation;
     public RotateCommand(IRotation rotation)
-    { 
+    {
         this.rotation = rotation;
     }
     public void Execute()
     {
-        rotation.Position = (rotation.Position + rotation.Velocity)%8;
+        rotation.Position = (rotation.Position + rotation.Velocity) % 8;
     }
 }

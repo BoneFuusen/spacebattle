@@ -73,7 +73,7 @@ public class RotationCommandTest
 
         // action
         rotateCommand.Execute();
-        
+
         //post
         rotation.SetupSet(m => m.Position = 2).Throws(new Exception()).Verifiable();
         Assert.Throws<Exception>(() => rotateCommand.Execute());
