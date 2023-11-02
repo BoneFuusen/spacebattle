@@ -1,11 +1,19 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "TdNN59Cbt1+OSk47Ty/GlpbMGOs5PTY9yO89dJXnsDJxLpwFapu7k3ym5V5uNi0gGeBnF65k8HDEPJUK1i7yQQ==",
+=======
+  "dgSpecHash": "Zk39Bhp7C3eqtZ7mFJhk109Uu3imfxVya+xbg+81vInl6P0g9YgjdN0DV8DTilP29DZ7XOB7voepGe1u/qI6vQ==",
+>>>>>>> 2f7f1885736cffbf615afa1e8e90640917f6a3fc
   "success": true,
   "projectFilePath": "C:\\Users\\Sovano\\source\\repos\\bimbimbambam\\SpaceBattle.Lib.Tests\\SpaceBattle.Lib.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sovano\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+<<<<<<< HEAD
     "C:\\Users\\Sovano\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
+=======
+    "C:\\Users\\Sovano\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
+>>>>>>> 2f7f1885736cffbf615afa1e8e90640917f6a3fc
     "C:\\Users\\Sovano\\.nuget\\packages\\microsoft.codecoverage\\17.3.2\\microsoft.codecoverage.17.3.2.nupkg.sha512",
     "C:\\Users\\Sovano\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\Sovano\\.nuget\\packages\\microsoft.net.test.sdk\\17.3.2\\microsoft.net.test.sdk.17.3.2.nupkg.sha512",
