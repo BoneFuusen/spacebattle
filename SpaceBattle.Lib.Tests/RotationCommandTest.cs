@@ -12,7 +12,7 @@ public class RotationCommandTest
     // Тест четвёртый. Объект не может двигаться
 
     [Fact]
-    public void MoveCommandPositive()
+    public void TheGameObjectCanRotateUniformlyWithoutDeformationAroundItself()
     {
         // pre
         var rotation = new Mock<IRotation>();
@@ -32,7 +32,7 @@ public class RotationCommandTest
     }
 
     [Fact]
-    public void MoveCommandNoPosition()
+    public void ThePositionOfTheGameObjectCannotBeConsideredWhenRotateUniformlyWithoutDeformation()
     {
         // pre
         var rotation = new Mock<IRotation>();
@@ -48,7 +48,7 @@ public class RotationCommandTest
     }
 
     [Fact]
-    public void MoveCommandNoVelocity()
+    public void AccelerationCannotBeConsideredForAGameObjectWhenRotateUniformlyWithoutDeformation()
     {
         // pre
         var rotation = new Mock<IRotation>();
@@ -64,7 +64,7 @@ public class RotationCommandTest
     }
 
     [Fact]
-    public void MoveCommandConstPosition()
+    public void TheGameObjectCannotRotateUniformlyWithoutDeformation()
     {
         // pre
         var rotation = new Mock<IRotation>();
