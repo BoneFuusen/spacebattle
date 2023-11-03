@@ -4,6 +4,7 @@ public interface IRotation
 {
     public int Position { get; set; }
     public int Velocity { get; }
+    public int Division { get; }
 }
 
 public class RotateCommand : ICommand
@@ -15,6 +16,6 @@ public class RotateCommand : ICommand
     }
     public void Execute()
     {
-        rotation.Position = (rotation.Position + rotation.Velocity) % 8;
+        rotation.Position = (rotation.Position + rotation.Velocity) % rotation.Division;
     }
 }
