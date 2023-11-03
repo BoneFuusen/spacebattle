@@ -27,3 +27,4 @@ jobs:
         
       - name: Format
         run: dotnet format --verify-no-changes
+        
