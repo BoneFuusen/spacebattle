@@ -17,8 +17,8 @@ public class RotationCommandTest
         // pre
         var rotation = new Mock<IRotation>();
 
-        rotation.SetupGet(m => m.Position).Returns(1).Verifiable();
-        rotation.SetupGet(m => m.Velocity).Returns(1).Verifiable();
+        rotation.SetupGet(m => m.Angle).Returns(1).Verifiable();
+        rotation.SetupGet(m => m.AngleVelocity).Returns(1).Verifiable();
         rotation.SetupGet(m => m.Division).Returns(8).Verifiable();
 
         ICommand rotateCommand = new RotateCommand(rotation.Object);
@@ -27,7 +27,7 @@ public class RotationCommandTest
         rotateCommand.Execute();
 
         //post
-        rotation.VerifySet(m => m.Position = 2, Times.Once);
+        rotation.VerifySet(m => m.Angle = 2, Times.Once);
         rotation.VerifyAll();
     }
 
@@ -37,8 +37,8 @@ public class RotationCommandTest
         // pre
         var rotation = new Mock<IRotation>();
 
-        rotation.SetupGet(m => m.Position).Throws(new Exception()).Verifiable();
-        rotation.SetupGet(m => m.Velocity).Returns(1).Verifiable();
+        rotation.SetupGet(m => m.Angle).Throws(new Exception()).Verifiable();
+        rotation.SetupGet(m => m.AngleVelocity).Returns(1).Verifiable();
         rotation.SetupGet(m => m.Division).Returns(8).Verifiable();
 
         ICommand rotateCommand = new RotateCommand(rotation.Object);
@@ -53,8 +53,8 @@ public class RotationCommandTest
         // pre
         var rotation = new Mock<IRotation>();
 
-        rotation.SetupGet(m => m.Position).Returns(1).Verifiable();
-        rotation.SetupGet(m => m.Velocity).Throws(new Exception()).Verifiable();
+        rotation.SetupGet(m => m.Angle).Returns(1).Verifiable();
+        rotation.SetupGet(m => m.AngleVelocity).Throws(new Exception()).Verifiable();
         rotation.SetupGet(m => m.Division).Returns(8).Verifiable();
 
         ICommand rotateCommand = new RotateCommand(rotation.Object);
@@ -69,8 +69,8 @@ public class RotationCommandTest
         // pre
         var rotation = new Mock<IRotation>();
 
-        rotation.SetupGet(m => m.Position).Returns(1).Verifiable();
-        rotation.SetupGet(m => m.Velocity).Returns(1).Verifiable();
+        rotation.SetupGet(m => m.Angle).Returns(1).Verifiable();
+        rotation.SetupGet(m => m.AngleVelocity).Returns(1).Verifiable();
         rotation.SetupGet(m => m.Division).Returns(8).Verifiable();
 
         ICommand rotateCommand = new RotateCommand(rotation.Object);
@@ -79,7 +79,7 @@ public class RotationCommandTest
         rotateCommand.Execute();
 
         //post
-        rotation.SetupSet(m => m.Position = 2).Throws(new Exception()).Verifiable();
+        rotation.SetupSet(m => m.Angle = 2).Throws(new Exception()).Verifiable();
         Assert.Throws<Exception>(() => rotateCommand.Execute());
         rotation.VerifyAll();
     }
