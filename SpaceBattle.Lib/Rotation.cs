@@ -2,8 +2,9 @@ namespace SpaceBattle.Lib;
 
 public interface IRotation
 {
-    public int Position { get; set; }
-    public int Velocity { get; }
+    public int Angle { get; set; }
+    public int AngleVelocity { get; }
+    public int Division { get; }
 }
 
 public class RotateCommand : ICommand
@@ -15,6 +16,6 @@ public class RotateCommand : ICommand
     }
     public void Execute()
     {
-        rotation.Position = (rotation.Position + rotation.Velocity) % 8;
+        rotation.Angle = (rotation.Angle + rotation.AngleVelocity) % rotation.Division;
     }
 }

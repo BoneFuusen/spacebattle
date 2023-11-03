@@ -26,4 +26,4 @@ jobs:
         run: dotnet test SpaceBattle.Lib.Tests /p:CollectCoverage=true /p:CoverletOutput=TestResults/ddc7c36c-b7d6-423e-adb4-f8b835741cef/ /p:CoverletOutputFormat=lcov
         
       - name: Format
-        run: dotnet format --verify-no-changes
+        run: dotnet format --verify-no-changes\
