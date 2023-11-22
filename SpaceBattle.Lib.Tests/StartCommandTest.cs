@@ -22,15 +22,15 @@ public class StartCommandTests
     private StartCommand _startCommand;
 
     public StartCommandTests()
-    { 
+    {
         new InitScopeBasedIoCImplementationCommand().Execute();
-        
+
         _commandStartMock = new Mock<ICommandStart>();
         _uObjectMock = new Mock<IUObject>();
 
         _commandStartMock.Setup(m => m.Target).Returns(_uObjectMock.Object);
         _commandStartMock.Setup(m => m.Properties).Returns(new Dictionary<string, object>());
-            
+
         _startCommand = new StartCommand(_commandStartMock.Object);
     }
 
