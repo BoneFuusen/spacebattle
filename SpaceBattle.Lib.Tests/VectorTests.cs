@@ -12,11 +12,18 @@ public class VectorTest
     }
 
     [Fact]
-    public void VectorNegativeSizeTest()
+    public void VectorDifferentSizezSumTest()
     {
         Vector a = new Vector(2, 3);
         Vector b = new Vector(4, 5, 6);
         Assert.Throws<ArgumentException>(() => Vector.VectorSum(a, b));
+    }
+    [Fact]
+    public void VectorDifferentSizesEqualityTest()
+    {
+        Vector a = new Vector(2, 3);
+        Vector b = new Vector(4, 5, 6);
+        Assert.Throws<ArgumentException>(() => Vector.VectorEquality(a, b));
     }
 
     [Fact]
