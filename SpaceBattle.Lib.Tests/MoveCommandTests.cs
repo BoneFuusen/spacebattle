@@ -4,7 +4,7 @@ namespace SpaceBattle.Lib.Tests;
 public class MoveCommandTest
 {
     [Fact]
-    public void StraightMovementWithoutDeformation(){
+    public void TheGameObjectMoveStraightlyWithoutDeformationStraightMovementWithoutDeformation(){
         Mock<IMove> move = new Mock<IMove>();
         move.SetupGet(a => a.pos).Returns(new Vector(12, 5));
         move.SetupGet(b => b.vel).Returns(new Vector(-7, 3));
@@ -18,7 +18,7 @@ public class MoveCommandTest
     }
 
     [Fact]
-    public void NoPos(){
+    public void ThePositionOfTheGameObjectCannotBeConsideredWhenMovingStraightlyWithoutDeformation(){
         Mock<IMove> move = new Mock<IMove>();
         move.SetupGet(a => a.pos).Throws<ArgumentException>();
         move.SetupGet(b => b.vel).Returns(new Vector(-7, 3));
@@ -28,7 +28,7 @@ public class MoveCommandTest
     }
 
     [Fact]
-    public void NoVel(){
+    public void VelocityCannotBeConsideredForAGameObjectWhenMovingStraightlyWithoutDeformation(){
         Mock<IMove> move = new Mock<IMove>();
         move.SetupGet(a => a.pos).Returns(new Vector(12, 5));
         move.SetupGet(b => b.vel).Throws<ArgumentException>();
@@ -38,7 +38,7 @@ public class MoveCommandTest
     }
 
     [Fact]
-    public void NotMovable(){
+    public void MovingAnObjectWhichPositionCannotBeChanged(){
         Mock<IMove> move = new Mock<IMove>();
         move.SetupGet(a => a.pos).Returns(new Vector(12, 5));
         move.SetupSet(a => a.pos = It.IsAny<Vector>()).Throws<ArgumentException>();
