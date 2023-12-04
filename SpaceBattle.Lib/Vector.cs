@@ -32,4 +32,7 @@ public class Vector
         }
         return pass;
     }
+    public static int VectorHashCode(Vector a){
+        return a.coords.Aggregate(0, (total, next) => HashCode.Combine(total, next));
+    }
 }
