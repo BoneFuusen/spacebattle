@@ -8,7 +8,7 @@ public class VectorTest
     {
         Vector a = new Vector(2, 3);
         Vector b = new Vector(4, 5);
-        Assert.True(Vector.VectorEquality(new Vector(6, 8), Vector.VectorSum(a, b)));
+        Assert.True(Vector.Equals(new Vector(6, 8), a + b));
     }
 
     [Fact]
@@ -16,14 +16,15 @@ public class VectorTest
     {
         Vector a = new Vector(2, 3);
         Vector b = new Vector(4, 5, 6);
-        Assert.Throws<ArgumentException>(() => Vector.VectorSum(a, b));
+        Assert.Throws<ArgumentException>(() => a + b);
     }
+
     [Fact]
-    public void VectorDifferentSizesEqualityTest()
+    public void VectorDifferentSizezEqualityTest()
     {
         Vector a = new Vector(2, 3);
         Vector b = new Vector(4, 5, 6);
-        Assert.Throws<ArgumentException>(() => Vector.VectorEquality(a, b));
+        Assert.False(Vector.Equals(a, b));
     }
 
     [Fact]
@@ -31,7 +32,7 @@ public class VectorTest
     {
         Vector a = new Vector(2, 2);
         Vector b = new Vector(2, 2);
-        Assert.True(Vector.VectorEquality(a, b));
+        Assert.True(Vector.Equals(a, b));
     }
 
     [Fact]
@@ -39,7 +40,7 @@ public class VectorTest
     {
         Vector a = new Vector(5, 5);
         Vector b = new Vector(25, 5);
-        Assert.False(Vector.VectorEquality(a, b));
+        Assert.False(Vector.Equals(a, b));
     }
 
     [Fact]
@@ -47,7 +48,7 @@ public class VectorTest
     {
         Vector a = new Vector(5, 5);
         Vector b = new Vector(5, 5);
-        Assert.True(Vector.VectorEquality(a, b));
+        Assert.True(Vector.Equals(a, b));
     }
 
     [Fact]
@@ -55,6 +56,14 @@ public class VectorTest
     {
         Vector a = new Vector(1, 2);
         Vector b = new Vector(1, 2);
-        Assert.Equal(Vector.VectorHashCode(a), Vector.VectorHashCode(b));
+        Assert.Equal(a.GetHashCode(), a.GetHashCode());
+    }
+
+    [Fact]
+    public void AttemptToCompareNonVectorObjects()
+    {
+        Vector a = new Vector(1, 2);
+        int b = 2;
+        Assert.False(Vector.Equals(a, b));
     }
 }

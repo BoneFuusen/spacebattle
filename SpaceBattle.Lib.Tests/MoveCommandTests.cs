@@ -7,15 +7,13 @@ public class MoveCommandTest
     public void TheGameObjectMoveStraightlyWithoutDeformationStraightMovementWithoutDeformation()
     {
         Mock<IMove> move = new Mock<IMove>();
-        move.SetupGet(a => a.pos).Returns(new Vector(12, 5));
+        move.SetupProperty(a => a.pos, new Vector(12, 5));
         move.SetupGet(b => b.vel).Returns(new Vector(-7, 3));
         ICommand movecommand = new MoveCommand(move.Object);
 
         movecommand.Execute();
-        var husk = new Vector(5, 8);
-        bool pass = Vector.VectorEquality(move.Object.pos, husk);
 
-        Assert.True(pass);
+        Assert.Equal(move.Object.pos, new Vector(5, 8));
     }
 
     [Fact]
@@ -45,7 +43,7 @@ public class MoveCommandTest
     {
         Mock<IMove> move = new Mock<IMove>();
         move.SetupGet(a => a.pos).Returns(new Vector(12, 5));
-        move.SetupSet(a => a.pos = It.IsAny<Vector>()).Throws<ArgumentException>();
+        move.SetupSet(a => a.pos = new Vector(5, 8)).Throws<ArgumentException>();
         move.SetupGet(b => b.vel).Returns(new Vector(-7, 3));
         ICommand movecommand = new MoveCommand(move.Object);
 

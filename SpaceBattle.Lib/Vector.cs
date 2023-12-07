@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace SpaceBattle.Lib;
 
 public class Vector
@@ -10,36 +12,20 @@ public class Vector
         dim = args.Length;
     }
 
-    public static Vector VectorSum(Vector a, Vector b)
+    public static Vector operator +(Vector a, Vector b)
     {
         if (a.dim != b.dim) throw new System.ArgumentException();
 
-        var c = a;
-        for (int i = 0; i < a.dim; i++)
+        var c = new Vector
         {
-            c.coords[i] += b.coords[i];
-        }
+            coords = a.coords.Zip(b.coords, (x, y) => x + y).ToArray()
+        };
         return c;
     }
-    public static bool VectorEquality(Vector a, Vector b)
+    public override bool Equals(object? obj)
     {
-        if (a.dim != b.dim) throw new System.ArgumentException();
-
-        bool pass = true;
-
-        for (int i = 0; i < a.dim; i++)
-        {
-            if (a.coords[i] != b.coords[i])
-            {
-                pass = false;
-                break;
-            }
-            else continue;
-        }
-        return pass;
+        return obj is Vector v && coords.SequenceEqual(v.coords);
     }
-    public static int VectorHashCode(Vector a)
-    {
-        return a.coords.Aggregate(0, (total, next) => HashCode.Combine(total, next));
-    }
+
+    public override int GetHashCode() => coords.Aggregate(0, (total, next) => HashCode.Combine(total, next));  
 }

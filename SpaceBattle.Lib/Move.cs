@@ -14,6 +14,6 @@ public class MoveCommand : ICommand
     }
     public void Execute()
     {
-        moving.pos = Vector.VectorSum(moving.pos, moving.vel);
+        moving.pos = moving.pos + moving.vel;
     }
 }
