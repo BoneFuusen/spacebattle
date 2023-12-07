@@ -27,5 +27,8 @@ public class Vector
         return obj is Vector v && coords.SequenceEqual(v.coords);
     }
 
-    public override int GetHashCode() => coords.Aggregate(0, (total, next) => HashCode.Combine(total, next));  
+    public override int GetHashCode()
+    {
+        return coords.Aggregate(0, (total, next) => HashCode.Combine(total, next));
+    }
 }
