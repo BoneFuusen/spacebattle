@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace SpaceBattle.Lib.Tests;
 
-public class MacrocommandTest 
+public class MacrocommandTest
 {
     public MacrocommandTest()
     {
@@ -57,7 +57,7 @@ public class MacrocommandTest
         var mockUObject = new Mock<IUObject>();
 
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", operationName, (object[] args) => new List<string> { "Game.Command.Operation" }).Execute();
-        IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "CreateMacro.Create",(object[] args) => new CreateMacrocommand().Strategy(args[0], args[1])).Execute();
+        IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "CreateMacro.Create", (object[] args) => new CreateMacrocommand().Strategy(args[0], args[1])).Execute();
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Game.Command.Operation", (object[] args) => mockCommand.Object).Execute();
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "CreateMacro", (object[] args) => mockCommand.Object).Execute();
 
@@ -76,11 +76,11 @@ public class MacrocommandTest
         var mockUObject = new Mock<IUObject>();
 
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", operationName, (object[] args) => new List<string> { "Game.Command.Operation" }).Execute();
-        IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "CreateMacro.Create",(object[] args) => new CreateMacrocommand().Strategy(args[0], args[1])).Execute();
+        IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "CreateMacro.Create", (object[] args) => new CreateMacrocommand().Strategy(args[0], args[1])).Execute();
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Game.Command.Operation", (object[] args) => mockCommand.Object).Execute();
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "CreateMacro", (object[] args) => mockCommand.Object).Execute();
 
-        var exception = Assert.Throws<Exception>(() => {IoC.Resolve<SpaceBattle.Lib.ICommand>("CreateMacro.Create", operationName, mockUObject.Object).Execute();});
+        var exception = Assert.Throws<Exception>(() => { IoC.Resolve<SpaceBattle.Lib.ICommand>("CreateMacro.Create", operationName, mockUObject.Object).Execute(); });
         Assert.Equal("ExpectedErrorMessage", exception.Message);
     }
 }
