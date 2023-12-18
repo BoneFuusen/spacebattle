@@ -8,8 +8,8 @@ public class CreateMacrocommand : IStrategy
     {
         var operationname = (string)objects[0];
         var iuObject = (IUObject)objects[1];
-        var commands = IoC.Resolve<IEnumerable<string>>("NewMacroCommand." + operationname);
+        var commands = IoC.Resolve<IEnumerable<string>>(operationname);
         var addCommand = commands.Select(o => IoC.Resolve<ICommand>(o, iuObject));
-        return IoC.Resolve<ICommand>("Commands.createMacro", addCommand);
+        return IoC.Resolve<ICommand>("CreateMacro", addCommand);
     }
 }
