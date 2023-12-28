@@ -37,14 +37,17 @@ public class StopCommandTests
     {
         var stopable = new Mock<ICommandStop>();
         var obj = new Mock<IUObject>();
+        var stopableCommand = new Mock<ICommand>();
         stopable.SetupGet(a => a.Target).Returns(obj.Object).Verifiable();
         stopable.SetupGet(a => a.Properties).Returns(new List<string>() { "Velocity" }).Verifiable();
+        stopableCommand.Setup(a => a.Execute());
 
         ICommand stopMove = new StopCommand(stopable.Object);
 
         stopMove.Execute();
 
-        stopable.Verify();
+        stopable.Verify(a => a.Properties, Times.Once);
+        stopableCommand.Verify(a => a.Execute(), Times.Never);
     }
 
     [Fact]
