@@ -51,7 +51,6 @@ public class CheckCollisionTests
 
         var checkCollision = IoC.Resolve<SpaceBattle.Lib.ICommand>("IUObject.CheckCollision", mockObj.Object, mockObj.Object);
 
-        checkCollision.Execute();
-        mockICommand.Verify(m => m.Execute(), Times.Never());
+        Assert.Throws<System.Exception>(() => checkCollision.Execute());
     }
 }

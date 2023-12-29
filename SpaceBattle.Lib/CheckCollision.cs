@@ -22,18 +22,8 @@ public class CheckCollision : ICommand
 
         var list = object1.Zip(object2, (a, b) => a - b).ToList();
 
-        try
-        {
-            list.ForEach(n => builddecisiontree = (IDictionary<int, object>)builddecisiontree[n]);
-        }
-        catch
-        {
-            collision = false;
-        }
+        list.ForEach(n => builddecisiontree = (IDictionary<int, object>)builddecisiontree[n]);
 
-        if (collision == true)
-        {
-            IoC.Resolve<ICommand>("Game.Collision", obj1, obj2).Execute();
-        }
+        IoC.Resolve<ICommand>("Game.Collision", obj1, obj2).Execute();
     }
 }
