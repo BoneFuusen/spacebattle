@@ -46,11 +46,11 @@ public class StopCommandTests
 
         try
         {
-        stopMove.Execute();
+            stopMove.Execute();
         }
         finally
         {
-        stopable.Verify(a => a.Properties, Times.Once);
+            stopable.Verify(a => a.Properties, Times.Once);
         }
     }
 
