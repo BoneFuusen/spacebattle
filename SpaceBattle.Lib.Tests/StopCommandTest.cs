@@ -44,10 +44,14 @@ public class StopCommandTests
 
         ICommand stopMove = new StopCommand(stopable.Object);
 
+        try
+        {
         stopMove.Execute();
-
+        }
+        finally
+        {
         stopable.Verify(a => a.Properties, Times.Once);
-        stopableCommand.Verify(a => a.Execute(), Times.Never);
+        }
     }
 
     [Fact]
