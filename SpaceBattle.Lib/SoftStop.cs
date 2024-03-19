@@ -3,7 +3,7 @@ namespace SpaceBattle.Lib;
 public class SoftStopCommand : ICommand
 {
     private ServerThread _t;
-    private Action _a;
+    private Action? _a;
     public SoftStopCommand(ServerThread t)
     {
         _t = t;
