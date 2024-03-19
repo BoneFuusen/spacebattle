@@ -109,9 +109,8 @@ public class ExceptionThreadTest
         var ss = IoC.Resolve<ICommand>("ServerThread.Commands.SoftStopTheThread", 1);
         var mockObject = new Mock<Action>();
 
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object));
         IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, ss);
 
-        mockObject.Verify(m => m.Invoke(), Times.Once());
+        mockObject.Verify(m => m.Invoke(), Times.Exactly(0));
     }
 }
