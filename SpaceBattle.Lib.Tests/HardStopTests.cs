@@ -62,7 +62,7 @@ public class HardStopTests
 
         IoC.Resolve<string>("ServerThread.Commands.CreateAndStartThread", 1, () => { });
 
-        var hs = IoC.Resolve<ICommand>("ServerThread.Commands.HardStopTheThread", 1, () => { });
+        var hs = IoC.Resolve<ICommand>("ServerThread.Commands.HardStopTheThread", 1);
 
         Assert.Throws<Exception>(hs.Execute);
 

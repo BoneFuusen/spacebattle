@@ -62,7 +62,7 @@ public class SoftStopTests
 
         IoC.Resolve<string>("ServerThread.Commands.CreateAndStartThread", 1, () => { });
 
-        var ss = IoC.Resolve<ICommand>("ServerThread.Commands.SoftStopTheThread", 1, () => { });
+        var ss = IoC.Resolve<ICommand>("ServerThread.Commands.SoftStopTheThread", 1);
 
         Assert.Throws<Exception>(ss.Execute);
 

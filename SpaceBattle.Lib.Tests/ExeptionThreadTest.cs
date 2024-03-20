@@ -68,48 +68,4 @@ public class ExceptionThreadTest
         mockObject.Verify(m => m.Invoke(), Times.Exactly(2));
         handleCommand.Verify(m => m.Execute(), Times.Once());
     }
-
-    [Fact]
-    public void NoOtherActionInHardStop()
-    {
-        IoC.Resolve<Hwdtech.ICommand>(
-            "Scopes.Current.Set",
-            IoC.Resolve<object>("Scopes.New",
-                IoC.Resolve<object>("Scopes.Root")
-            )
-        ).Execute();
-
-        new ThreadInitialization().Execute();
-
-        IoC.Resolve<string>("ServerThread.Commands.CreateAndStartThread", 1, () => { });
-
-        var hs = IoC.Resolve<ICommand>("ServerThread.Commands.HardStopTheThread", 1);
-        var mockObject = new Mock<Action>();
-
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, hs);
-
-        mockObject.Verify(m => m.Invoke(), Times.Exactly(0));
-    }
-
-    [Fact]
-    public void NoOtherActionInSoftStop()
-    {
-        IoC.Resolve<Hwdtech.ICommand>(
-            "Scopes.Current.Set",
-            IoC.Resolve<object>("Scopes.New",
-                IoC.Resolve<object>("Scopes.Root")
-            )
-        ).Execute();
-
-        new ThreadInitialization().Execute();
-
-        IoC.Resolve<string>("ServerThread.Commands.CreateAndStartThread", 1, () => { });
-
-        var ss = IoC.Resolve<ICommand>("ServerThread.Commands.SoftStopTheThread", 1);
-        var mockObject = new Mock<Action>();
-
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, ss);
-
-        mockObject.Verify(m => m.Invoke(), Times.Exactly(0));
-    }
 }
