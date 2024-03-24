@@ -45,17 +45,17 @@ public class ExceptionThreadTest
         var mockObjectExeption = new Mock<Action>();
         mockObjectExeption.Setup(m => m.Invoke()).Throws<Exception>().Verifiable();
 
-        var setScopeCommand = IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set",
+        var scopeCommand = IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set",
                 IoC.Resolve<object>("Scopes.New",
                     IoC.Resolve<object>("Scopes.Root")
                 )
             );
 
-        var adaptedSetScopeCommand = new ICommandAdapter(setScopeCommand);
+        var adaptedScopeCommand = new ICommandAdapter(scopeCommand);
 
         var adaptedRegisterCommand = new ICommandAdapter(IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "ExceptionHandler.Handle", (object[] args) => handleCommand.Object));
 
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, adaptedSetScopeCommand);
+        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, adaptedScopeCommand);
         IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, adaptedRegisterCommand);
         IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object));
         IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObjectExeption.Object));
