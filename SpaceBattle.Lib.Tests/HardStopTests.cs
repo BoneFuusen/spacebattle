@@ -32,16 +32,16 @@ public class HardStopTests
         new ThreadInitialization().Execute();
 
         var mre = new ManualResetEvent(false);
-        IoC.Resolve<string>("ServerThread.Commands.CreateAndStartThread", 1, () => { });
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.CreateAndStartThread", 1, () => { }).Execute();
 
         var hs = IoC.Resolve<ICommand>("ServerThread.Commands.HardStopTheThread", 1, () => { mre.Set(); });
 
         var mockObject = new Mock<Action>();
 
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object));
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object));
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, hs);
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object));
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object)).Execute();
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object)).Execute();
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, hs).Execute();
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object)).Execute();
 
         mre.WaitOne();
 
@@ -60,12 +60,12 @@ public class HardStopTests
 
         new ThreadInitialization().Execute();
 
-        IoC.Resolve<string>("ServerThread.Commands.CreateAndStartThread", 1, () => { });
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.CreateAndStartThread", 1, () => { }).Execute();
 
         var hs = IoC.Resolve<ICommand>("ServerThread.Commands.HardStopTheThread", 1);
 
         Assert.Throws<Exception>(hs.Execute);
 
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, hs);
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, hs).Execute();
     }
 }

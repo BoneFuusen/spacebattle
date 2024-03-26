@@ -37,8 +37,8 @@ public class ThreadInitialization : ICommand
                     new ActionCommand((Action)args[1]).Execute();
                 }
 
-                thread.Start();
-                return "";
+                var cmd = new ActionCommand(() => {thread.Start();});
+                return cmd;
             }).Execute();
 
         IoC.Resolve<Hwdtech.ICommand>(
@@ -47,8 +47,8 @@ public class ThreadInitialization : ICommand
             (object[] args) =>
             {
                 var q = IoC.Resolve<BlockingCollection<ICommand>>("ServerThread.Commands.SearchQ" + (int)args[0]);
-                q.Add((ICommand)args[1]);
-                return "";
+                var cmd = new ActionCommand(() => {q.Add((ICommand)args[1]);});
+                return cmd;
             }).Execute();
 
         IoC.Resolve<Hwdtech.ICommand>(
@@ -91,6 +91,6 @@ public class ThreadInitialization : ICommand
                 {
                     new SoftStopCommand(thread).Execute();
                 });
-            }).Execute(); ;
+            }).Execute();
     }
 }

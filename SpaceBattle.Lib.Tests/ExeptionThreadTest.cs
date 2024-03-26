@@ -33,7 +33,7 @@ public class ExceptionThreadTest
 
         var mre = new ManualResetEvent(false);
 
-        IoC.Resolve<string>("ServerThread.Commands.CreateAndStartThread", 1, () => { });
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.CreateAndStartThread", 1, () => { }).Execute();
 
         var mockObject = new Mock<Action>();
 
@@ -55,13 +55,13 @@ public class ExceptionThreadTest
 
         var adaptedRegisterCommand = new ICommandAdapter(IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "ExceptionHandler.Handle", (object[] args) => handleCommand.Object));
 
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, adaptedScopeCommand);
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, adaptedRegisterCommand);
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object));
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObjectExeption.Object));
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object));
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, hs);
-        IoC.Resolve<string>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object));
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, adaptedScopeCommand).Execute();
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, adaptedRegisterCommand).Execute();
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object)).Execute();
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObjectExeption.Object)).Execute();
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object)).Execute();
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, hs).Execute();
+        IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, new ActionCommand(mockObject.Object)).Execute();
 
         mre.WaitOne();
 
