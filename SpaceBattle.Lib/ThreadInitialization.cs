@@ -37,7 +37,7 @@ public class ThreadInitialization : ICommand
                     new ActionCommand((Action)args[1]).Execute();
                 }
 
-                var cmd = new ActionCommand(() => {thread.Start();});
+                var cmd = new ActionCommand(() => { thread.Start(); });
                 return cmd;
             }).Execute();
 
@@ -47,7 +47,7 @@ public class ThreadInitialization : ICommand
             (object[] args) =>
             {
                 var q = IoC.Resolve<BlockingCollection<ICommand>>("ServerThread.Commands.SearchQ" + (int)args[0]);
-                var cmd = new ActionCommand(() => {q.Add((ICommand)args[1]);});
+                var cmd = new ActionCommand(() => { q.Add((ICommand)args[1]); });
                 return cmd;
             }).Execute();
 
