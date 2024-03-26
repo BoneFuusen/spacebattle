@@ -52,7 +52,6 @@ public class ExceptionThreadTest
             );
 
         var adaptedScopeCommand = new ICommandAdapter(scopeCommand);
-
         var adaptedRegisterCommand = new ICommandAdapter(IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "ExceptionHandler.Handle", (object[] args) => handleCommand.Object));
 
         IoC.Resolve<SpaceBattle.Lib.ICommand>("ServerThread.Commands.SendCommand", 1, adaptedScopeCommand).Execute();
