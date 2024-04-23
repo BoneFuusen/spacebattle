@@ -12,7 +12,7 @@ namespace WebHttp
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/body")]
         [OpenApiTag("Tag")]
-        [OpenApiResponse(ContentTypes = new[] { "application/json", "text/xml" }, Description = "Success", StatusCode = HttpStatusCode.OK, Type = typeof(MessageContract)) ]
+        [OpenApiResponse(ContentTypes = new[] { "application/json", "text/xml" }, Description = "Success", StatusCode = HttpStatusCode.OK, Type = typeof(MessageContract))]
         string BodyEcho(
             [OpenApiParameter(ContentTypes = new[] { "application/json", "text/xml" }, Description = "param description.")] MessageContract param);
     }

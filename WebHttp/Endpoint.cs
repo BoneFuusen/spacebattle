@@ -14,7 +14,8 @@ namespace WebHttp
                 var ThreadId = (int)IoC.Resolve<object>("SearchThreadIdByGameId", message.GameId);
                 IoC.Resolve<SpaceBattle.Lib.ICommand>("Endpoint.Commands.SendCommand", ThreadId, IoC.Resolve<SpaceBattle.Lib.ICommand>("ICommand Message", message)).Execute();
                 return "202 Accepted";
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 var exp = e.GetType();
                 return $"400 Bad Request. {exp}";
