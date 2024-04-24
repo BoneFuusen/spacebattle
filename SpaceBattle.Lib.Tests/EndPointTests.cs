@@ -66,10 +66,9 @@ public class EndpointTests
 
         var wa = new Endpoint();
 
-        var response = wa.BodyEcho(message);
+        wa.BodyEcho(message);
 
         Assert.Single(q);
-        Assert.Equal("202 Accepted", response);
     }
 
     [Fact]
@@ -83,7 +82,6 @@ public class EndpointTests
             (object[] args) => { return (object)ThreadId; }).Execute();
 
         var cmd = new Mock<ICommand>();
-        cmd.Setup(cmd => cmd.Execute()).Throws(new Exception());
 
         IoC.Resolve<Hwdtech.ICommand>(
             "IoC.Register",
@@ -113,9 +111,12 @@ public class EndpointTests
 
         var wa = new Endpoint();
 
-        var response = wa.BodyEcho(message.Object);
+        var exception_com = new ActionCommand(() =>
+        {
+            wa.BodyEcho(message.Object);
+        });
 
-        Assert.Equal("400 Bad Request. System.Exception", response);
+        Assert.Throws<Exception>(exception_com.Execute);
     }
 
     [Fact]
@@ -158,8 +159,11 @@ public class EndpointTests
 
         var wa = new Endpoint();
 
-        var response = wa.BodyEcho(message.Object);
+        var exception_com = new ActionCommand(() =>
+        {
+            wa.BodyEcho(message.Object);
+        });
 
-        Assert.Equal("400 Bad Request. System.InvalidCastException", response);
+        Assert.Throws<InvalidCastException>(exception_com.Execute);
     }
 }
