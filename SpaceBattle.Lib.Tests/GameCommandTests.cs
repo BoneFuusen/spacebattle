@@ -30,7 +30,7 @@ public class GameCommandTests
 
 
         var handleCommand = new Mock<ICommand>();
-        IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "ExceptionHandler.Handle", (object[] args) => handleCommand.Object).Execute();
+        new ExceptionHandlerInitioalization(handleCommand.Object).Execute();
 
         var excCmd = new Mock<ICommand>();
         excCmd.Setup(m => m.Execute()).Throws<Exception>();
@@ -51,7 +51,7 @@ public class GameCommandTests
     }
 
     [Fact]
-    public void GameCommandIsWorksWithZeroQueue()
+    public void GameCommandWorksWithZeroQueue()
     {
         var scope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
         IoC.Resolve<Hwdtech.ICommand>(
