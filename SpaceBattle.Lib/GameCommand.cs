@@ -19,7 +19,7 @@ public class GameCommand : ICommand
     {
         IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", _scope).Execute();
         _watch.Reset();
-        while (_watch.ElapsedMilliseconds <= (int)IoC.Resolve<object>("GetQuant"))
+        while (_watch.ElapsedMilliseconds <= IoC.Resolve<int>("GetQuant"))
         {
             if (_queue.Count == 0)
             {
