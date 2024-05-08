@@ -106,7 +106,7 @@ public class GameCommandTests
 
         Assert.Throws<Exception>(() => gamecmd.Execute());
         excCmd2.Verify(m => m.Execute(), Times.Once());
-        
+
     }
 
     [Fact]
