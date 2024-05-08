@@ -18,7 +18,7 @@ public class GameCommand : ICommand
     public void Execute()
     {
         IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", _scope).Execute();
-
+        _watch.Reset();
         while (_watch.ElapsedMilliseconds <= (int)IoC.Resolve<object>("GetQuant"))
         {
             if (_queue.Count == 0)
@@ -35,7 +35,10 @@ public class GameCommand : ICommand
             {
                 IoC.Resolve<ICommand>("ExceptionHandler.Handle", cmd, e).Execute();
             }
-            _watch.Stop();
+            finally
+            {
+                _watch.Stop();
+            }
         }
     }
 }
