@@ -1,4 +1,3 @@
-using Castle.Components.DictionaryAdapter;
 using Hwdtech;
 using Hwdtech.Ioc;
 using Moq;
