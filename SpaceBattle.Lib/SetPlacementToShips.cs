@@ -14,11 +14,11 @@ public class SetPlacementToShips : ICommand
 
     public void Execute()
     {
-        System.Collections.IEnumerator positionsEnumerator = _positions.GetEnumerator();
+        IEnumerator<int[]> positionsEnumerator = _positions.GetEnumerator();
 
         _uObjects.ForEach(obj =>
         {
-            IoC.Resolve<ICommand>("Game.Property.Set", obj, "Position", positionsEnumerator.Current);
+            IoC.Resolve<ICommand>("Game.Property.Set", obj, "Position", positionsEnumerator.Current).Execute();
             positionsEnumerator.MoveNext();
         });
 

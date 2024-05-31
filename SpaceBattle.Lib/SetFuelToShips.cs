@@ -14,11 +14,11 @@ public class SetFuelToShips : ICommand
 
     public void Execute()
     {
-        System.Collections.IEnumerator fuelEnumerator = _fuel.GetEnumerator();
+        IEnumerator<int> fuelEnumerator = _fuel.GetEnumerator();
 
         _uObjects.ForEach(obj =>
         {
-            IoC.Resolve<ICommand>("Game.Property.Set", obj, "Fuel", fuelEnumerator.Current);
+            IoC.Resolve<ICommand>("Game.Property.Set", obj, "Fuel", fuelEnumerator.Current).Execute();
             fuelEnumerator.MoveNext();
         });
 

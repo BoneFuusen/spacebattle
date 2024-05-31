@@ -15,7 +15,8 @@ public class CreateEmptyGameObjects : ICommand
     {
         var uObjects = IoC.Resolve<IDictionary>("Game.GetUObjects");
 
-        Enumerable.Range(0, _quantity).ToList().ForEach(i => {
+        Enumerable.Range(0, _quantity).ToList().ForEach(i =>
+        {
             uObjects.Add(i, IoC.Resolve<IUObject>("Game.UObject.Create"));
         });
     }
