@@ -12,42 +12,44 @@ public class GeneratingAdapters
         _pastType = pastType;
         _nextType = nextType;
     }
-    public string Build()
+    public string Adapt()
     {
         var properties = _nextType.GetProperties().ToList();
 
-        var sampleString = @"
-        public class {{nextType_name}}Adapter : {{nextType_name}} 
+        var sampleString =
+@"public class {{next_type}}Adapter : {{next_type}}
+{
+    private {{previous_type}} _obj;
+    public {{next_type}}Adapter({{previous_type}} obj)
+    {
+        _obj = obj;
+    }
+{{for property in (properties)}}
+    public {{property.property_type.name}} {{property.name}}
+    {
+{{if property.can_read}}
+        get
         {
-            private {{pastType_name}} _obj;
-    
-            public {{nextType_name}}Adapter({{pastType_name}} obj)
-            {
-                _obj = obj;
-            }
-
-            {{for property in (next_properties)}}
-            public {{property.property_type.name}} {{property.name}}
-            {
-                {{if property.can_read}}
-                get
-                {
-                    return IoC.Resolve<{{property.property_type.name}}>('Get.Property', '{{property.name}}', _obj);
-                }
-                {{if property.can_write}}
-                set
-                {
-                    return IoC.Resolve<ICommand>('Set.Property', '{{property.name}}', _obj, value).Execute();
-                }
-            }
-        }";
-        var sample = Template.Parse(sampleString);
-        var sampledString = sample.Render(new
+            IoC.Resolve<{{property.property_type.name}}>('Get.Property', '{{property.name}}', _obj);
+        }
+{{end}}
+{{if property.can_write}}
+        set
         {
-            nextType_name = _nextType.Name,
-            pastType_name = _pastType.Name,
-            next_properties = properties,
+            IoC.Resolve<ICommand>('Set.Property', '{{property.name}}', _obj, value).Execute();
+        }
+{{end}}
+    }
+{{end}}
+}";
+        var code = Template.Parse(sampleString);
+        var renderedCode = code.Render(new
+        {
+            previous_type = _pastType.Name,
+            next_type = _nextType.Name,
+            properties,
         });
-        return sampledString;
+
+        return renderedCode;
     }
 }
