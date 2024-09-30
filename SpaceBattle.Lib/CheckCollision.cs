@@ -24,11 +24,14 @@ public class CheckCollision : ICommand
 
         // list.ForEach(n => builddecisiontree = (IDictionary<int, object>)builddecisiontree[n]);
 
-        foreach (var item in list){
-            if (builddecisiontree.TryGetValue(item, out var value)){
+        foreach (var item in list)
+        {
+            if (builddecisiontree.TryGetValue(item, out var value))
+            {
                 builddecisiontree = (IDictionary<int, object>)value;
             }
-            else{
+            else
+            {
                 builddecisiontree = new Dictionary<int, object>();
             }
         }
