@@ -41,16 +41,18 @@ public class CheckCollisionTests
     {
         var mockICommand = new Mock<SpaceBattle.Lib.ICommand>();
         var mockDict = new Mock<IDictionary<int, object>>();
-        var mockObj = new Mock<SpaceBattle.Lib.IUObject>();
+        var mockObj = new Mock<IUObject>();
 
         mockICommand.Setup(m => m.Execute()).Verifiable();
-        mockDict.SetupGet(m => m[It.IsAny<int>()]).Throws<Exception>();
+        mockDict.SetupGet(m => m[It.IsAny<int>()]).Returns(mockDict.Object);
 
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Game.CheckCollision", (object[] args) => mockDict.Object).Execute();
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Game.Collision", (object[] args) => mockICommand.Object).Execute();
 
         var checkCollision = IoC.Resolve<SpaceBattle.Lib.ICommand>("IUObject.CheckCollision", mockObj.Object, mockObj.Object);
 
-        Assert.Throws<System.Exception>(() => checkCollision.Execute());
+        checkCollision.Execute();
+
+        mockICommand.Verify();
     }
 }

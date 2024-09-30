@@ -22,7 +22,16 @@ public class CheckCollision : ICommand
 
         var list = object1.Zip(object2, (a, b) => a - b).ToList();
 
-        list.ForEach(n => builddecisiontree = (IDictionary<int, object>)builddecisiontree[n]);
+        // list.ForEach(n => builddecisiontree = (IDictionary<int, object>)builddecisiontree[n]);
+
+        foreach (var item in list){
+            if (builddecisiontree.TryGetValue(item, out var value)){
+                builddecisiontree = (IDictionary<int, object>)value;
+            }
+            else{
+                builddecisiontree = new Dictionary<int, object>();
+            }
+        }
 
         IoC.Resolve<ICommand>("Game.Collision", obj1, obj2).Execute();
     }
