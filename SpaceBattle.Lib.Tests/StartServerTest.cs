@@ -16,7 +16,7 @@ public class StartServerTest
     [Fact]
     public void Start_Server_Test()
     {
-        var startCommand = new Mock<Hwdtech.ICommand>();
+        var startCommand = new Mock<ICommand>();
         startCommand.Setup(cmd => cmd.Execute()).Verifiable();
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Game.Commands.CreateAndStartThread", (object[] args) =>
         {

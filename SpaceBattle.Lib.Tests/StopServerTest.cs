@@ -20,30 +20,13 @@ public class StopServerTest
         a.Execute();
     }
 
-    public class SendCommandMock : Hwdtech.ICommand
-    {
-        private readonly Hwdtech.ICommand _command;
-        private readonly Hwdtech.ICommand _stopCommand;
-
-        public SendCommandMock(Hwdtech.ICommand command, Hwdtech.ICommand stopCommand)
-        {
-            _command = command;
-            _stopCommand = stopCommand;
-        }
-
-        public void Execute()
-        {
-            _command.Execute();
-            _stopCommand.Execute();
-        }
-    }
-
     [Fact]
+
     public void StopServer_Test()
     {
         var threadList = new List<int> { 1, 2, 3 };
         var barrier = new Barrier(4);
-        var stopCommand = new Mock<Hwdtech.ICommand>();
+        var stopCommand = new Mock<ICommand>();
         stopCommand.Setup(x => x.Execute()).Verifiable();
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Game.Commands.GetThreadIDs", (object[] args) => { return threadList; }).Execute();
 
@@ -61,10 +44,13 @@ public class StopServerTest
         {
             return new ActionCommand((Action)args[1]);
         }).Execute();
-
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Game.Commands.SendCommand", (object[] args) =>
         {
-            return new SendCommandMock((Hwdtech.ICommand)args[1], stopCommand.Object);
+            return new ActionCommand(() =>
+            {
+                ((ICommand)args[1]).Execute();
+                stopCommand.Object.Execute();
+            });
         }).Execute();
 
         IoC.Resolve<ICommand>("Game.Commands.StopServerCommand").Execute();

@@ -2,7 +2,7 @@ namespace SpaceBattle.Lib;
 using System.Linq;
 using Hwdtech;
 
-public class InitCommand : Hwdtech.ICommand
+public class InitCommand : ICommand
 {
     public void Execute()
     {
@@ -14,7 +14,7 @@ public class InitCommand : Hwdtech.ICommand
             {
                 Enumerable.Range(0, NumberOfThreads).ToList().ForEach(i =>
                 {
-                    IoC.Resolve<Hwdtech.ICommand>("Game.Commands.CreateAndStartThread").Execute();
+                    IoC.Resolve<ICommand>("Game.Commands.CreateAndStartThread").Execute();
                 });
             });
         }).Execute();
@@ -39,12 +39,12 @@ public class InitCommand : Hwdtech.ICommand
             {
                 ThreadList.ForEach(thread_id =>
                  {
-                IoC.Resolve<Hwdtech.ICommand>("Game.Commands.SendCommand", thread_id,
-                IoC.Resolve<Hwdtech.ICommand>("Game.Commands.SoftStopThread", thread_id,
+                     IoC.Resolve<ICommand>("Game.Commands.SendCommand", thread_id,
+                IoC.Resolve<ICommand>("Game.Commands.SoftStopThread", thread_id,
                 IoC.Resolve<Action>("Game.Commands.StopServerBarrierRemove"))).Execute();
                  });
 
-                IoC.Resolve<Hwdtech.ICommand>("Game.Commands.StopServerBarrierWait").Execute();
+                IoC.Resolve<ICommand>("Game.Commands.StopServerBarrierWait").Execute();
             });
         }).Execute();
     }
