@@ -5,7 +5,6 @@ namespace SpaceBattle.Lib;
 public class CheckCollision : ICommand
 {
     private readonly IUObject obj1, obj2;
-    private bool collision = true;
 
     public CheckCollision(IUObject uobj1, IUObject uobj2)
     {
@@ -21,8 +20,6 @@ public class CheckCollision : ICommand
         var object2 = IoC.Resolve<List<int>>("Game.Commands.GetProperty", obj2);
 
         var list = object1.Zip(object2, (a, b) => a - b).ToList();
-
-        // list.ForEach(n => builddecisiontree = (IDictionary<int, object>)builddecisiontree[n]);
 
         foreach (var item in list)
         {
